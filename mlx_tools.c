@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:23:20 by jbernard          #+#    #+#             */
-/*   Updated: 2021/10/28 16:21:50 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/12 12:02:47 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,66 @@ t_mlx	init_mlx()
 	mlx.img_ptr = mlx_new_image(mlx.mlx_ptr, WIDTH, HEIGHT);
 	mlx.addr = mlx_get_data_addr(mlx.img_ptr, &mlx.bits_per_pixel, &mlx.size_line, &mlx.endian);
 
+	return (mlx);
 }
 
-int	put_pixel(t_mlx mlx, int x, int y, unsigned int color)
-{
-	int pos;
+int	put_fractal_pixels(t_mlx mlx, t_fractal fractal, unsigned int x, unsigned int y)
+{	
+	unsigned int color;
 
-	mlx.addr = mlx_get_data_addr(mlx.img_ptr, &mlx.bits_per_pixel, &mlx.size_line, &mlx.endian);
-	pos = (y * mlx.size_line + x * (mlx.bits_per_pixel / 8));
-	mlx.addr += pos;
-	*(unsigned int *)mlx.addr = color;
+	color = 0x000000;
+	if (fractal.curr_iter == fractal.max_iter)
+	{
+		mlx.addr[(x * 4) + (y * WIDTH * 4)] = 0;
+		mlx.addr[(x * 4) + (y * WIDTH * 4) + 1] = 0;
+		mlx.addr[(x * 4) + (y * WIDTH * 4) + 2] = 0;
+	}
+	else
+	{
+		mlx.addr[(x * 4) + (y * WIDTH * 4)] = color + (fractal.curr_iter * 2) % 256;
+		mlx.addr[(x * 4) + (y * WIDTH * 4) + 1] = color + 0x0000FF + (fractal.curr_iter * 30) % 256;
+		mlx.addr[(x * 4) + (y * WIDTH * 4) + 2] = color + 0x00FF00 + (fractal.curr_iter * 57) % 256;
+	}
 	return (1);
 }
 
+void	put_image(t_mlx mlx)
+{
+	mlx_put_image_to_window (mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
+}
+
+void	zoom_in(t_data *data, int x, int y)
+{
+	int mousex;
+	int mousey;
+
+	mousex = x * (data->scale.max_x - data->scale.min_x) / WIDTH + data->scale.min_x;
+	mousey = y * (data->scale.max_y - data->scale.min_y) / HEIGHT + data->scale.min_y;
+	data->scale.max_x = data->scale.max_x / 1.1 + mousex * 0.1;
+	data->scale.min_x = data->scale.min_x / 1.1 + mousex * 0.1;
+	data->scale.max_y = data->scale.max_y / 1.1 + mousey * 0.1;
+	data->scale.min_y = data->scale.min_y / 1.1 + mousey * 0.1;
+	printf("mousex = %d\nmousey = %d\nmin_x,y = %Lf,%Lf\nmax_x,y = %Lf,%Lf\n x,y = %d,%d\n\n\n", mousex, mousey, data->scale.min_x, data->scale.min_y, data->scale.max_x, data->scale.max_y, x, y);
+
+	data->fractal.max_iter += 1;
+
+	draw_fractal(*data);
+	put_image(data->mlx);
+}
+
+void	zoom_out(t_data *data)
+{
+
+	if (data->scale.max_x <= 2)
+	{
+		data->scale.max_x = data->scale.max_x * 1.1;
+		data->scale.min_x = data->scale.min_x * 1.1;
+		data->scale.max_y = data->scale.max_y * 1.1;
+		data->scale.min_y = data->scale.min_y * 1.1;
+	}
+
+	data->fractal.max_iter -= 1;
+	
+	draw_fractal(*data);
+	put_image(data->mlx);
+}

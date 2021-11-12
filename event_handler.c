@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_error.c                                        :+:      :+:    :+:   */
+/*   event_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/28 16:13:59 by jbernard          #+#    #+#             */
-/*   Updated: 2021/10/28 16:14:37 by jbernard         ###   ########.fr       */
+/*   Created: 2021/11/11 15:41:55 by jbernard          #+#    #+#             */
+/*   Updated: 2021/11/12 11:35:52 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_testing.h"
 
-void error_handle(int error_id)
+int	mouse_event_manager(int button, int x, int y, t_data *data)
 {
-	if (error_id == 0)
-		printf("Error #0: ");
-	else if (error_id == -1)
-		printf("Error #1: ");
-	else if (error_id == -2);
-		printf("Error #2: ");
-	exit ();
+	if (button == 5)
+		zoom_out(data);
+	if (button == 4)
+		zoom_in(data, x, y);
+
+	return (1);
 }
 
-void exit_program(t_mlx mlx)
+int	key_event_manager(int key_code, t_data *data)
 {
-	mlx_destroy_image(mlx.mlx_ptr, mlx.img_ptr);
-	mlx_destroy_window(mlx.mlx_ptr, mlx.win_ptr);
-	exit (0);
+	printf("Keycode : %d\n", key_code);
+	printf("Fractal : %d", data->fractal.max_iter);
+	return (1);
 }
