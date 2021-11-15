@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:55:24 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/15 16:30:59 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	zoom_out(t_data *data, int x, int y);
 // event_handler.c //
 int	mouse_event_manager(int button, int x, int y, t_data *data);
 int	key_event_manager(int key_code, t_data *data);
-int	mouse_motion_event();
+void	move(t_data *data, int key_code);
 
 // mlx_unused.c //
 int		put_pixel_window(t_mlx mlx, unsigned int x, unsigned int y, unsigned int color);

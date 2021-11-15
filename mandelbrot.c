@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:47:52 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:31:27 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/15 16:34:42 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,9 @@ unsigned int	mandelbrot(t_fractal f, t_scale s, unsigned int x, unsigned int y)
 		f.curr_iter++;
 	}
 	return (f.curr_iter);
+}
+
+void	set_starting_z(t_data *data, int x, int y)
+{
+	
 }
