@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_testing.h                                      :+:      :+:    :+:   */
+/*   fractal.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/12 11:40:55 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:55:24 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define MAX_ITER 20
+# define MAX_ITER 3
 
 #include <mlx.h>
 #include <stdio.h>
@@ -62,11 +62,12 @@ t_mlx	init_mlx();
 int	put_fractal_pixels(t_mlx mlx, t_fractal fractal, unsigned int x, unsigned int y);
 void	put_image(t_mlx mlx);
 void	zoom_in(t_data *data, int x, int y);
-void	zoom_out(t_data *data);
+void	zoom_out(t_data *data, int x, int y);
 
 // event_handler.c //
 int	mouse_event_manager(int button, int x, int y, t_data *data);
 int	key_event_manager(int key_code, t_data *data);
+int	mouse_motion_event();
 
 // mlx_unused.c //
 int		put_pixel_window(t_mlx mlx, unsigned int x, unsigned int y, unsigned int color);

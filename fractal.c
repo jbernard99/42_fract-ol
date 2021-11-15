@@ -6,11 +6,11 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:58:25 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/12 10:21:28 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:31:15 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_testing.h"
+#include "fractal.h"
 
 t_scale	init_scale()
 {

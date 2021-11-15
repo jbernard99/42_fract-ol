@@ -6,11 +6,11 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 11:47:52 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/12 10:37:36 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/15 15:31:27 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_testing.h"
+#include "fractal.h"
 
 unsigned int	mandelbrot(t_fractal f, t_scale s, unsigned int x, unsigned int y)
 {
