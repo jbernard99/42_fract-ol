@@ -6,13 +6,13 @@
 #    By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:28:55 by jbernard          #+#    #+#              #
-#    Updated: 2021/11/15 15:35:40 by jbernard         ###   ########.fr        #
+#    Updated: 2021/11/15 22:33:44 by jbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractal.out
 HEADER = fractal.h
-SRC = main.c fractal.c mandelbrot.c event_handler.c mlx_tools.c
+SRC = main.c fractal.c mandelbrot.c mouse_events.c key_events.c mlx_tools.c
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

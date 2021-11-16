@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:23:20 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/15 16:27:12 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/15 22:38:42 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,44 +48,4 @@ int	put_fractal_pixels(t_mlx mlx, t_fractal fractal, unsigned int x, unsigned in
 void	put_image(t_mlx mlx)
 {
 	mlx_put_image_to_window (mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
-}
-
-void	zoom_in(t_data *data, int x, int y)
-{
-	long double mousex;
-	long double mousey;
-
-	mousex = x * (data->scale.max_x - data->scale.min_x) / WIDTH + data->scale.min_x;
-	mousey = y * (data->scale.max_y - data->scale.min_y) / HEIGHT + data->scale.min_y;
-	data->scale.max_x = data->scale.max_x / 1.1 + mousex * 0.1;
-	data->scale.min_x = data->scale.min_x / 1.1 + mousex * 0.1;
-	data->scale.max_y = data->scale.max_y / 1.1 + mousey * 0.1;
-	data->scale.min_y = data->scale.min_y / 1.1 + mousey * 0.1;
-	data->fractal.max_iter += 1;
-	//printf("mousex = %Lf\nmousey = %Lf\nmin_x,y = %Lf,%Lf\nmax_x,y = %Lf,%Lf\n x,y = %d,%d\n\n\n", mousex, mousey, data->scale.min_x, data->scale.min_y, data->scale.max_x, data->scale.max_y, x, y);
-	draw_fractal(*data);
-	put_image(data->mlx);
-}
-
-void	zoom_out(t_data *data, int x, int y)
-{
-	long double mousex;
-	long double mousey;
-
-	mousex = x * (data->scale.max_x - data->scale.min_x) / WIDTH + data->scale.min_x;
-	mousey = y * (data->scale.max_y - data->scale.min_y) / HEIGHT + data->scale.min_y;
-	if (data->scale.max_x <= 2)
-		data->scale.max_x = data->scale.max_x * 1.1 - mousex * 0.1;
-	if (data->scale.min_x >= -2)
-		data->scale.min_x = data->scale.min_x * 1.1 - mousex * 0.1;
-	if (data->scale.max_y <= 2)
-		data->scale.max_y = data->scale.max_y * 1.1 - mousey * 0.1;
-	if (data->scale.max_y <= 2)
-		data->scale.min_y = data->scale.min_y * 1.1 - mousex * 0.1;
-
-	if (data->fractal.max_iter >= 3)
-		data->fractal.max_iter -= 1;
-
-	draw_fractal(*data);
-	put_image(data->mlx);
 }
