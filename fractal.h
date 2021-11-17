@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/15 23:06:02 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/17 13:41:37 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1080
-# define MAX_ITER 32
+# define MAX_ITER 10
 
 #include <mlx.h>
 #include <stdio.h>
@@ -72,9 +72,11 @@ unsigned int	mandelbrot(t_fractal f, t_scale s, unsigned int x, unsigned int y);
 void			set_starting_z(t_data *data, int x, int y);
 
 // mouse_events.c //
+int		mouse_event_manager(int button, int x, int y, t_data *data);
+
+// zoom.c //
 void	zoom_in(t_data *data, int x, int y);
 void	zoom_out(t_data *data, int x, int y);
-int		mouse_event_manager(int button, int x, int y, t_data *data);
 
 // key_events.c //
 void	move(t_data *data, int key_code);

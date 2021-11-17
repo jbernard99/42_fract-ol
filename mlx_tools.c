@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:23:20 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/15 22:38:42 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/17 12:39:34 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_mlx	init_mlx()
 	mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, WIDTH, HEIGHT, "Minilibx testing...");
 	mlx.img_ptr = mlx_new_image(mlx.mlx_ptr, WIDTH, HEIGHT);
 	mlx.addr = mlx_get_data_addr(mlx.img_ptr, &mlx.bits_per_pixel, &mlx.size_line, &mlx.endian);
-	printf("BBP : %d, SIZE_LINE : %d", mlx.bits_per_pixel, mlx.size_line);
 
 	return (mlx);
 }
