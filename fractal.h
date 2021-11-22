@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/17 13:41:37 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/22 15:28:50 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 #include <mlx.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 typedef struct s_mlx {
 	void	*mlx_ptr;
@@ -55,38 +57,44 @@ typedef struct s_data {
 	t_mlx mlx;
 	t_scale scale;
 	t_fractal fractal;
+	unsigned int type;
 }	t_data;
 
+// MAIN TOOLS //
 // main.c //
 t_data	init_data();
-int		main();
+int		ft_strncmp(const char *str1, const char *str2, size_t n);
+void	update_fractal(t_data data);
+int		main(int argc, char *argv[]);
 
 // fractal.c //
 t_scale		init_scale();
 t_complex	init_complex();
-t_fractal	init_fractal();
+t_fractal	init_fractal(unsigned int max_iter);
 int			draw_fractal(t_data data);
-
-// mandelbrot.c //
-unsigned int	mandelbrot(t_fractal f, t_scale s, unsigned int x, unsigned int y);
-void			set_starting_z(t_data *data, int x, int y);
-
-// mouse_events.c //
-int		mouse_event_manager(int button, int x, int y, t_data *data);
-
-// zoom.c //
-void	zoom_in(t_data *data, int x, int y);
-void	zoom_out(t_data *data, int x, int y);
-
-// key_events.c //
-void	move(t_data *data, int key_code);
-int		key_event_manager(int key_code, t_data *data);
 
 // mlx_tools.c //
 t_mlx	init_mlx();
 int		put_fractal_pixels(t_mlx mlx, t_fractal fractal, unsigned int x, unsigned int y);
 void	put_image(t_mlx mlx);
+
+// sets.c //
+unsigned int	mandelbrot(t_fractal f, t_scale s, unsigned int x, unsigned int y);
+unsigned int	julia(t_fractal f, t_scale s, unsigned int x, unsigned int y);
+unsigned int	burning_ship(t_fractal f, t_scale s, unsigned int x, unsigned int y);
+
+//EVENTS AND HOOKS //
+// events_managers.c //
+int		mouse_event_manager(int button, int x, int y, t_data *data);
+int		key_event_manager(int key_code, t_data *data);
+
+// mouse_events.c //
+int		move_cursor(int x, int y, t_data *data);
 void	zoom_in(t_data *data, int x, int y);
 void	zoom_out(t_data *data, int x, int y);
+
+// key_events.c //
+void	move(t_data *data, int key_code);
+void	quit(t_data *data);
 
 #endif

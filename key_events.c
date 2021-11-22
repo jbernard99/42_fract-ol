@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 21:59:01 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/15 22:38:22 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/22 13:49:47 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,9 @@ void	move(t_data *data, int key_code)
 	}
 }
 
-int	key_event_manager(int key_code, t_data *data)
+void	quit(t_data *data)
 {
-	printf("Keycode : %d\n", key_code);
-	printf("Fractal : %d", data->fractal.max_iter);
-
-	if (key_code >= 123 && key_code <= 126)
-		move(data, key_code);
-		
-	draw_fractal(*data);
-	put_image(data->mlx);
-	return (1);
+	mlx_destroy_image(data->mlx.mlx_ptr, data->mlx.img_ptr);
+	mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win_ptr);
+	exit(0);
 }

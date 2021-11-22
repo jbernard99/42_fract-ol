@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:58:25 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/15 15:31:15 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/22 15:26:25 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_complex	init_complex()
 	return (complex);
 }
 
-t_fractal init_fractal(int max_iter)
+t_fractal init_fractal(unsigned int max_iter)
 {
 	t_fractal fractal;
 
@@ -52,13 +52,19 @@ int	draw_fractal(t_data data)
 	unsigned int x;
 	unsigned int y;
 
+	printf("\n***DATA.TYPE == %d**\n\n", data.type);
 	x = 0;
 	while (x < WIDTH)
 	{
 		y = 0;
 		while (y < HEIGHT)
 		{
-			data.fractal.curr_iter = mandelbrot(data.fractal, data.scale, x, y);
+			if (data.type == 0)
+				data.fractal.curr_iter = mandelbrot(data.fractal, data.scale, x, y);
+			else if (data.type == 1)
+				data.fractal.curr_iter = julia(data.fractal, data.scale, x, y);
+			else if (data.type == 2)
+				data.fractal.curr_iter = burning_ship(data.fractal, data.scale, x, y);
 			put_fractal_pixels(data.mlx, data.fractal, x, y);
 			y++;
 		}
