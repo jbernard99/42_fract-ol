@@ -6,13 +6,19 @@
 #    By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:28:55 by jbernard          #+#    #+#              #
-#    Updated: 2021/11/22 14:51:37 by jbernard         ###   ########.fr        #
+#    Updated: 2021/11/23 14:29:15 by jbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractal.out
 HEADER = fractal.h
-SRC = main.c fractal.c sets.c events_managers.c mouse_events.c key_events.c mlx_tools.c
+SRC = main.c \
+	fractal.c \
+	sets.c \
+	events_managers.c \
+	mouse_events.c \
+	key_events.c \
+	mlx_tools.c
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

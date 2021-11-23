@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:23:20 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/17 12:39:34 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/23 16:30:26 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,11 @@ t_mlx	init_mlx()
 
 int	put_fractal_pixels(t_mlx mlx, t_fractal fractal, unsigned int x, unsigned int y)
 {	
-	unsigned int color;
-
-	color = 0x000000;
 	if (fractal.curr_iter != fractal.max_iter)
 	{
-		mlx.addr[(x * 4) + (y * WIDTH * 4)] = color + (fractal.curr_iter * 2) % 256;
-		mlx.addr[(x * 4) + (y * WIDTH * 4) + 1] = color + 0x0000FF + (fractal.curr_iter * 30) % 256;
-		mlx.addr[(x * 4) + (y * WIDTH * 4) + 2] = color + 0x00FF00 + (fractal.curr_iter * 57) % 256;
+		mlx.addr[(x * 4) + (y * WIDTH * 4)] = fractal.colors.R + (fractal.curr_iter * 120) % 256;
+		mlx.addr[(x * 4) + (y * WIDTH * 4) + 1] = fractal.colors.G + (fractal.curr_iter * 60) % 256;
+		mlx.addr[(x * 4) + (y * WIDTH * 4) + 2] = fractal.colors.B + (fractal.curr_iter * 25) % 256;
 	}
 	else
 	{
@@ -47,4 +44,15 @@ int	put_fractal_pixels(t_mlx mlx, t_fractal fractal, unsigned int x, unsigned in
 void	put_image(t_mlx mlx)
 {
 	mlx_put_image_to_window (mlx.mlx_ptr, mlx.win_ptr, mlx.img_ptr, 0, 0);
+}
+
+long double	get_scaled_center(t_scale s, int x, int y)
+{
+	long double scaled_x;
+	long double scaled_y;
+
+	scaled_x = s.min_x + (s.max_x - s.min_x) * x / WIDTH;
+	scaled_y = s.min_y + (s.max_y - s.min_y) * y / HEIGHT;
+
+	
 }

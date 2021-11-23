@@ -6,13 +6,12 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/22 15:28:50 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:59:29 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_TESTING_H
 #define MLX_TESTING_H
-
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -42,13 +41,20 @@ typedef struct s_scale {
 
 typedef struct s_complex {
 	long double z_real;
-	long double z_imaginary;
+	long double z_im;
 	long double c_real;
-	long double c_imaginary;
+	long double c_im;
 }	t_complex;
 
+typedef struct s_colors {
+	char R;
+	char G;
+	char B;
+}	t_colors;
+
 typedef struct s_fractal {
-	t_complex complex;
+	t_complex c;
+	t_colors colors;
 	unsigned int curr_iter;
 	unsigned int max_iter;
 }	t_fractal;
@@ -77,6 +83,7 @@ int			draw_fractal(t_data data);
 t_mlx	init_mlx();
 int		put_fractal_pixels(t_mlx mlx, t_fractal fractal, unsigned int x, unsigned int y);
 void	put_image(t_mlx mlx);
+long double	get_scale(long double min, long double max);
 
 // sets.c //
 unsigned int	mandelbrot(t_fractal f, t_scale s, unsigned int x, unsigned int y);

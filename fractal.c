@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:58:25 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/22 15:26:25 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:22:00 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,30 @@ t_complex	init_complex()
 	t_complex complex;
 
 	complex.z_real = 0;
-	complex.z_imaginary = 0;
+	complex.z_im = 0;
 	complex.c_real = 0;
-	complex.c_imaginary = 0;
+	complex.c_im = 0;
 
 	return (complex);
+}
+
+t_colors	init_colors()
+{
+	t_colors colors;
+
+	colors.R = 0;
+	colors.G = 0;
+	colors.B = 0;
+
+	return (colors);
 }
 
 t_fractal init_fractal(unsigned int max_iter)
 {
 	t_fractal fractal;
 
-	fractal.complex = init_complex();
+	fractal.c = init_complex();
+	fractal.colors = init_colors();
 	fractal.curr_iter = 0;
 	fractal.max_iter = max_iter;
 
@@ -52,7 +64,6 @@ int	draw_fractal(t_data data)
 	unsigned int x;
 	unsigned int y;
 
-	printf("\n***DATA.TYPE == %d**\n\n", data.type);
 	x = 0;
 	while (x < WIDTH)
 	{
