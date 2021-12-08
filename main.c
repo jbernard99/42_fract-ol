@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:30:50 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 14:03:27 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 16:20:22 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ t_data	init_data()
 	return (data);
 }
 
-void	update_fractal(t_data data)
+void	update_fractal(t_data *data)
 {
 	draw_fractal(data);
-	put_image(data.mlx);
+	put_image(data->mlx);
 }
 
 void	print_menu()
@@ -77,8 +77,7 @@ int	main(int argc, char *argv[])
 			print_menu();
 			quit(&data);
 		}
-		printf("Type : %d", data.type);
-		draw_fractal(data);
+		draw_fractal(&data);
 		put_image(data.mlx);
 		mlx_loop(data.mlx.mlx_ptr);
 	}

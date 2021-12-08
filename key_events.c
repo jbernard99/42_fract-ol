@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 21:59:01 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 13:35:28 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:56:42 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,39 @@
 
 void	move(t_data *data, int key_code)
 {
-	if (key_code == 126)
+	if (data->fractal.max_iter <= 10)
 	{
-		data->scale.min_y -= 0.05;
-		data->scale.max_y -= 0.05;
+		if (key_code == 126)
+		{
+			data->scale.min_y -= MOVEMENT;
+			data->scale.max_y -= MOVEMENT;
+		}
+		else if (key_code == 125)
+		{
+			data->scale.min_y += MOVEMENT;
+			data->scale.max_y += MOVEMENT;
+		}
+		else if (key_code == 124)
+		{
+			data->scale.min_x += MOVEMENT;
+			data->scale.max_x += MOVEMENT;
+		}
+		else if (key_code == 123)
+		{
+			data->scale.min_x -= MOVEMENT;
+			data->scale.max_x -= MOVEMENT;
+		}
 	}
-	else if (key_code == 125)
-	{
-		data->scale.min_y += 0.05;
-		data->scale.max_y += 0.05;
-	}
-	else if (key_code == 124)
-	{
-		data->scale.min_x += 0.05;
-		data->scale.max_x += 0.05;
-	}
-	else if (key_code == 123)
-	{
-		data->scale.min_x -= 0.05;
-		data->scale.max_x -= 0.05;
-	}
+}
+
+void	reset_positions(t_data *data)
+{
+	data->scale.min_x = -2;
+	data->scale.max_x = 2;
+	data->scale.min_y = -2;
+	data->scale.max_y = 2;
+	data->fractal.max_iter = 10;
+	update_fractal(data);
 }
 
 void	quit(t_data *data)

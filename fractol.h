@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 14:51:02 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 16:11:23 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define MAX_ITER 10
 # define ZOOM_OUT_STRENGTH 1.4
 # define ZOOM_IN_STRENGTH 0.7
+# define MOVEMENT 0.1
 
 #include <mlx.h>
 #include <stdio.h>
@@ -72,7 +73,7 @@ typedef struct s_data {
 // main.c //
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
 t_data	init_data();
-void	update_fractal(t_data data);
+void	update_fractal(t_data *data);
 void	print_menu();
 int		main(int argc, char *argv[]);
 
@@ -80,7 +81,7 @@ int		main(int argc, char *argv[]);
 t_scale		init_scale();
 t_complex	init_complex();
 t_fractal	init_fractal(unsigned int max_iter);
-int			draw_fractal(t_data data);
+int			draw_fractal(t_data *data);
 
 // mlx_tools.c //
 t_mlx	init_mlx();
@@ -105,6 +106,7 @@ void	zoom_out(t_data *data);
 
 // key_events.c //
 void	move(t_data *data, int key_code);
+void	reset_positions(t_data *data);
 void	quit(t_data *data);
 
 #endif
