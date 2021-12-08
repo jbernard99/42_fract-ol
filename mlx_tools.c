@@ -6,11 +6,11 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:23:20 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/23 16:30:26 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 13:35:50 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 t_mlx	init_mlx()
 {
@@ -54,5 +54,5 @@ long double	get_scaled_center(t_scale s, int x, int y)
 	scaled_x = s.min_x + (s.max_x - s.min_x) * x / WIDTH;
 	scaled_y = s.min_y + (s.max_y - s.min_y) * y / HEIGHT;
 
-	
+	return (0.345);
 }

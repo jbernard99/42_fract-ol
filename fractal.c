@@ -6,11 +6,11 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 21:58:25 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/23 15:22:00 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 13:35:30 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 t_scale	init_scale()
 {

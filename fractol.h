@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal.h                                          :+:      :+:    :+:   */
+/*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/23 15:59:29 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:51:02 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # define MAX_ITER 10
+# define ZOOM_OUT_STRENGTH 1.4
+# define ZOOM_IN_STRENGTH 0.7
 
 #include <mlx.h>
 #include <stdio.h>
@@ -68,9 +70,10 @@ typedef struct s_data {
 
 // MAIN TOOLS //
 // main.c //
-t_data	init_data();
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
+t_data	init_data();
 void	update_fractal(t_data data);
+void	print_menu();
 int		main(int argc, char *argv[]);
 
 // fractal.c //
@@ -97,8 +100,8 @@ int		key_event_manager(int key_code, t_data *data);
 
 // mouse_events.c //
 int		move_cursor(int x, int y, t_data *data);
-void	zoom_in(t_data *data, int x, int y);
-void	zoom_out(t_data *data, int x, int y);
+void	zoom_in(t_data *data);
+void	zoom_out(t_data *data);
 
 // key_events.c //
 void	move(t_data *data, int key_code);

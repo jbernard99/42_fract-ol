@@ -6,18 +6,20 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:48:55 by jbernard          #+#    #+#             */
-/*   Updated: 2021/11/23 14:57:41 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 14:03:10 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractal.h"
+#include "fractol.h"
 
 int	mouse_event_manager(int button, int x, int y, t_data *data)
 {
+	(void)x;
+	(void)y;
 	if (button == 4)
-		zoom_out(data, x, y);
+		zoom_out(data);
 	else if (button == 5)
-		zoom_in(data, x, y);
+		zoom_in(data);
 	
 	update_fractal(*data);
 	return (1);

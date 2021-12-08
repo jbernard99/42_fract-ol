@@ -6,12 +6,12 @@
 #    By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/15 15:28:55 by jbernard          #+#    #+#              #
-#    Updated: 2021/11/23 14:29:15 by jbernard         ###   ########.fr        #
+#    Updated: 2021/12/08 14:41:08 by jbernard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractal.out
-HEADER = fractal.h
+NAME = fractol.out
+HEADER = fractol.h
 SRC = main.c \
 	fractal.c \
 	sets.c \
@@ -26,13 +26,14 @@ MLXFLAGS = -Imlx -lmlx -framework OpenGL -framework AppKit
 
 all : $(NAME)
 
-$(NAME) : fclean $(SRC)
+$(NAME) : $(SRC)
 	$(CC) $(CFLAGS) $(MLXFLAGS) $(SRC) -o $(NAME)
 
 clean :
-	rm -rf *.o
-
-fclean : clean
 	rm -rf $(NAME)
 
+fclean : clean
+
 re : fclean all
+
+bonus : re
