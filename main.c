@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 10:30:50 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 23:30:47 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/09 11:52:20 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_data	init_data(void)
 	t_data	data;
 
 	data.mlx = init_mlx();
-	data.scale = init_scale();
-	data.fractal = init_fractal(MAX_ITER);
+	data.s = init_scale();
+	data.f = init_fractal(MAX_ITER);
 	data.type = 0;
 	return (data);
 }
@@ -50,8 +50,7 @@ void	print_menu(t_data data)
 	printf("Available fractals:\n\n");
 	printf("	- Mandelbrot\n        - Julia\n        - BurningShip\n");
 	printf("\n\nHave fun! :)\n");
-	if (data.type != -1)
-		quit(&data);
+	quit(&data);
 }
 
 int	main(int argc, char *argv[])
