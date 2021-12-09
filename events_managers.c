@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:48:55 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 16:11:30 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:52:15 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ int	key_event_manager(int key_code, t_data *data)
 		reset_positions(data);
 	else if (key_code == 53)
 		quit(data);
+	else if (key_code == 6)
+		lower_max_iter(data);
+	else if (key_code == 7)
+		raise_max_iter(data);
 	update_fractal(data);
 	return (1);
 }

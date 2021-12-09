@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 16:11:23 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:50:29 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ void	zoom_out(t_data *data);
 // key_events.c //
 void	move(t_data *data, int key_code);
 void	reset_positions(t_data *data);
+void 	raise_max_iter(t_data *data);
+void 	lower_max_iter(t_data *data);
 void	quit(t_data *data);
 
 #endif

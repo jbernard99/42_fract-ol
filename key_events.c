@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 21:59:01 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 15:56:42 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 22:52:32 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void	move(t_data *data, int key_code)
 			data->scale.max_x -= MOVEMENT;
 		}
 	}
+}
+
+void raise_max_iter(t_data *data)
+{
+	data->fractal.max_iter += 1;
+}
+
+void lower_max_iter(t_data *data)
+{
+	if (data->fractal.max_iter > 2)
+		data->fractal.max_iter -= 1;
 }
 
 void	reset_positions(t_data *data)
