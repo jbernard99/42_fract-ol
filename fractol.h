@@ -6,7 +6,7 @@
 /*   By: jbernard <jbernard@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 14:02:09 by jbernard          #+#    #+#             */
-/*   Updated: 2021/12/08 22:50:29 by jbernard         ###   ########.fr       */
+/*   Updated: 2021/12/08 23:27:16 by jbernard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_data {
 	t_mlx mlx;
 	t_scale scale;
 	t_fractal fractal;
-	unsigned int type;
+	int type;
 }	t_data;
 
 // MAIN TOOLS //
@@ -90,9 +90,9 @@ void	put_image(t_mlx mlx);
 long double	get_scale(long double min, long double max);
 
 // sets.c //
-unsigned int	mandelbrot(t_fractal f, t_scale s, unsigned int x, unsigned int y);
-unsigned int	julia(t_fractal f, t_scale s, unsigned int x, unsigned int y);
-unsigned int	burning_ship(t_fractal f, t_scale s, unsigned int x, unsigned int y);
+int	mandelbrot(t_fractal f, t_scale s, int x, int y);
+int	julia(t_fractal f, t_scale s, int x, int y);
+int	burning_ship(t_fractal f, t_scale s, int x, int y);
 
 //EVENTS AND HOOKS //
 // events_managers.c //
